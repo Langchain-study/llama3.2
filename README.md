@@ -9,3 +9,9 @@ pip freeze > requirements.txt
 ```bash
 pip install -r requirements.txt
 ```
+
+# 서버 실행
+
+```bash
+uvicorn main:app --reload
+```
