@@ -24,7 +24,7 @@ class QuestionRequest(BaseModel):
 
 # LangChain LLM 설정
 llm = ChatOllama(
-    model="llama3.2",
+    model="llama3.2",  # 정확한 모델명
     format="json",  # 또는 "text"
     temperature=0,
 )
@@ -33,6 +33,8 @@ llm = ChatOllama(
 # POST /chat 라우트
 @app.post("/chat")
 async def chat(request: QuestionRequest):
+    print(request)
     response = llm.invoke(request.question)
+    print(response)
     parsed = json.loads(response.content)
     return parsed  # 그냥 JSON 자체를 반환
